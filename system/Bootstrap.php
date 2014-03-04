@@ -1,35 +1,44 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 
 define("CORE","TNZPHP");
-define("VERSION","0.0.1");
+define("VERSION","0.0.2");
 
+//检测配置文件
+if(file_exists(APP."config.php")){
+	require(APP."config.php");
+}else{
+	exit("Config file not found !");
+}
+
+//引入公共方法
+require(SYSTEM."Common.php");
+
+//引入基础控制器
 require(SYSTEM."Controller.php");
-require(SYSTEM."View.php");
+
+//引入基础模型
 require(SYSTEM."Model.php");
 
-$class  = isset($_GET['c'])?$_GET['c']:"Index";
-$method = isset($_GET['m'])?$_GET['m']:"index";
+//引入路由
+$RT = &load("R","Route.php");
 
-if(file_exists(APP."config.php")){
-    require(APP."config.php");
-}else{
-    exit("Config file not found !");
-}
+$class  = $RT->class;
+$method = $RT->method;
 
 if(file_exists(APP."controllers/".$class.".php")){
     include(APP."controllers/".$class.".php");
     if(class_exists($class)){
-        $VEW = new V();
-        $C = new $class();
-        if(method_exists($C,$method)){
-            if($class!="Index" OR $method!="index"){
-                $C->$method();
-            }
+        $VEW = &load("V","View.php");
+        //实例化控制器
+        $Controller = new $class();
+        if(method_exists($Controller,$method)){
+            //调用方法
+            $Controller->$method();
+            //输出
             $VEW->output();
         }else{
-                exit("Method not found !");
+            exit("Method not found !");
         }
-        
     }else{
         exit("Class not found !");
     }
@@ -37,15 +46,26 @@ if(file_exists(APP."controllers/".$class.".php")){
     exit("Class file not found !");
 }
 
-if(isset($C->conn)){
-    $C->conn->close();
+
+//关闭数据库连接
+if(isset($Controller->conn)){
+    $Controller->conn->close();
 }
 
+//获取控制器对象
+function &get_inst(){
+	return C::get_inst();
+}
+
+//Mysql驱动
 function &mysql_driver(){
-    global $config,$db;
+    global $config_db,$db;
     if(isset($db)){return $db;}
-    $db = new mysqli($config['db']['hostname'],$config['db']['username'],$config['db']['password'],$config['db']['database']);
-    $db->set_charset($config['db']['char_set']); 
+    $db = new mysqli($config_db['hostname'],$config_db['username'],$config_db['password'],$config_db['database']);
+    $db->set_charset($config_db['char_set']);
+    if(!$db){
+    	exit($db->error);
+    }
     return $db;
 }
 

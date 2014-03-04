@@ -1,9 +1,17 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 class Index extends C{
-
+	
+	public function __construct(){
+		parent::__construct();
+	}
+	
     public function index(){
-        $indexModel  = $this->model("Index");
-        $this->view("index",array('const'=>$indexModel->get_menu()));
+        $this->view("index");
+    }
+    
+    public function dbtest(){
+    	$indexModel  = $this->model("Index_model");
+    	print_r($indexModel->get_menu());
     }
    
 }

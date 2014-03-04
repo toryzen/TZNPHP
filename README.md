@@ -9,9 +9,11 @@
 <pre>
 system
     Bootstrap.php
+    Common.php
     Controller.php
     Model.php
     View.php
+    Route.php
 </pre>
 
 四个文件实现基本的MVC
@@ -22,7 +24,7 @@ app
     | controllers
         Index.php
     | models
-        Index.php
+        Index_model.php
     | views
         index.html
     config.php
@@ -53,11 +55,18 @@ require SYSTEM."Bootstrap.php";
 
 4、配置文件config.php
 <pre>
-$config['db']['hostname'] = 'localhost';
-$config['db']['username'] = 'root';
-$config['db']['password'] = '';
-$config['db']['database'] = '';
-$config['db']['char_set'] = 'utf8';
+//数据库配置
+$config_db['hostname'] = 'localhost';
+$config_db['username'] = 'root';
+$config_db['password'] = '';
+$config_db['database'] = 'ci_rbac';
+$config_db['char_set'] = 'utf8';
+
+//路由配置
+$config_rt['type']     = '2';	  						//URL模式,1:默认($_GET['c']:控制器,$_GET['m']:方法),2:PathInfo,3:混合
+$config_rt['class']    = 'Index'; 						//默认控制器类
+$config_rt['method']   = 'index'; 						//默认方法
+$config_rt['redict']['Index/test']   = 'Index/index';   //重定向
 </pre>
 
 后期再发开预计整体目录结构会发生变化
