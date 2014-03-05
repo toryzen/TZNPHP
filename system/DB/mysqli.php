@@ -1,7 +1,7 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
  * Mysql数据库操作(Mysqli)
- * @author toryzen
+ * @author toryzen 
  * 
  */
 class DB {

@@ -1,7 +1,7 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
  * 引导文件
- * @author toryzen
+ * @author toryzen 
  * 
  */
 define("CORE","TNZPHP");

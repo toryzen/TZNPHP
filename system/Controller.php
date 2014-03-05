@@ -1,7 +1,7 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
  * 控制器类
- * @author toryzen
+ * @author toryzen 
  *
  */
 class C{

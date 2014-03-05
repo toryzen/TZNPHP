@@ -1,7 +1,7 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
  * 视图类
- * @author toryzen
+ * @author toryzen 
  *
  */
 class M extends DB {

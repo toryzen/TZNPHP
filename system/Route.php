@@ -1,7 +1,7 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
  * 路由类
- * @author toryzen
+ * @author toryzen 
  *
  */
 class R{
