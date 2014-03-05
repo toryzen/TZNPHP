@@ -1,9 +1,9 @@
 <?php
 /**
-	TZN Framework 入口文件
+	TZN Framework 鍏ュ彛鏂囦欢
  */
-$app    = "app";	//APP目录
-$system = "system"; //SYSTEM目录
+$app    = "app";	//APP鐩綍
+$system = "system"; //SYSTEM鐩綍
 
 if(is_dir($app)){
     $app = realpath($app)."\\";

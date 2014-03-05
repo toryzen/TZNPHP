@@ -1,14 +1,14 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * Â·ÓÉÀà
+ * è·¯ç”±ç±»
  * @author toryzen
  *
  */
 class R{
 	
-	//¿ØÖÆÆ÷
+	//æŽ§åˆ¶å™¨
 	public $class = "Index";
-	//·½·¨
+	//æ–¹æ³•
 	public $method = "index";
 	
     public function __construct(){
@@ -17,7 +17,7 @@ class R{
     	$this->class  = isset($config_rt['class'])?$config_rt['class']:$this->class;
     	$this->method = isset($config_rt['method'])?$config_rt['method']:$this->method;
     	
-    	//ÅÐ¶ÏÂ·ÓÉÄ£Ê½
+    	//åˆ¤æ–­è·¯ç”±æ¨¡å¼
     	switch($config_rt['type']) {
 			case 1:
 				$this->class  = isset($_GET['c'])?$_GET['c']:$this->class;
@@ -40,7 +40,7 @@ class R{
     			
     	};
     	
-    	//ÖØ¶¨Ïò
+    	//é‡å®šå‘
     	if(isset($config_rt['redict'][$this->class."/".$this->method])){
     		$redict_path = explode("/",$config_rt['redict'][$this->class."/".$this->method]);
     		$this->class = $redict_path[0];

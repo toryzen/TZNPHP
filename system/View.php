@@ -1,6 +1,6 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * ÊÓÍ¼Àà
+ * è§†å›¾ç±»
  * @author Huangzhen
  *
  */

@@ -1,6 +1,6 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * 公共方法
+ * 鍏叡鏂规硶
  * @author toryzen
  * 
  */
@@ -35,7 +35,7 @@ if(!function_exists("load")){
 }
 
 /**
- * 记录载入的类
+ * 璁板綍杞藉叆鐨勭被
  */
 if(!function_exists("save_load")){
 

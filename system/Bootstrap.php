@@ -1,26 +1,26 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * Òıµ¼ÎÄ¼ş
+ * å¼•å¯¼æ–‡ä»¶
  * @author toryzen
  * 
  */
 define("CORE","TNZPHP");
 define("VERSION","0.0.2");
 
-//¼ì²âÅäÖÃÎÄ¼ş
+//æ£€æµ‹é…ç½®æ–‡ä»¶
 if(file_exists(APP."config.php")){
 	require(APP."config.php");
 }else{
 	exit("Config file not found !");
 }
 
-//ÒıÈë¹«¹²·½·¨
+//å¼•å…¥å…¬å…±æ–¹æ³•
 require(SYSTEM."Common.php");
 
-//ÒıÈë»ù´¡¿ØÖÆÆ÷
+//å¼•å…¥åŸºç¡€æ§åˆ¶å™¨
 require(SYSTEM."Controller.php");
 
-//ÒıÈëÂ·ÓÉ
+//å¼•å…¥è·¯ç”±
 $RT = &load("R","Route.php");
 
 $class  = $RT->class;
@@ -30,12 +30,12 @@ if(file_exists(APP."controllers/".$class.".php")){
     include(APP."controllers/".$class.".php");
     if(class_exists($class)){
         $VEW = &load("V","View.php");
-        //ÊµÀı»¯¿ØÖÆÆ÷
+        //å®ä¾‹åŒ–æ§åˆ¶å™¨
         $Controller = new $class();
         if(method_exists($Controller,$method)){
-            //µ÷ÓÃ·½·¨
+            //è°ƒç”¨æ–¹æ³•
             $Controller->$method();
-            //Êä³ö
+            //è¾“å‡º
             $VEW->output();
         }else{
             exit("Method not found !");
@@ -48,17 +48,17 @@ if(file_exists(APP."controllers/".$class.".php")){
 }
 
 
-//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+//å…³é—­æ•°æ®åº“è¿æ¥
 if(isset($Controller->conn)){
     $Controller->conn->close();
 }
 
-//»ñÈ¡¿ØÖÆÆ÷¶ÔÏó
+//è·å–æ§åˆ¶å™¨å¯¹è±¡
 function &get_inst(){
 	return C::get_inst();
 }
 
-//Êı¾İÇı¶¯
+//æ•°æ®é©±åŠ¨
 function &db_driver(){
     global $config_db,$db;
     if(isset($db)){return $db;}

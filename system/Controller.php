@@ -1,6 +1,6 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * ¿ØÖÆÆ÷Àà
+ * æ§åˆ¶å™¨ç±»
  * @author toryzen
  *
  */
@@ -13,14 +13,14 @@ class C{
     
     public function __construct(){
     	self::$instance =& $this;
-    	//ÔØÈëÒÑÔØÈë¹ıµÄºËĞÄÀà
+    	//è½½å…¥å·²è½½å…¥è¿‡çš„æ ¸å¿ƒç±»
     	foreach(save_load() as $class){
     		$this->core->$class = &load($class);
     	}
     }
     
     /**
-     * ÊÓÍ¼ÏÔÊ¾
+     * è§†å›¾æ˜¾ç¤º
      * @param unknown $filename
      * @param unknown $data_array
      */
@@ -42,11 +42,11 @@ class C{
     }
     
     /**
-     * Ä£ĞÍÊµÀı»¯
+     * æ¨¡å‹å®ä¾‹åŒ–
      * @param unknown $filename
      */
     public function model($filename="M"){
-    	//Èç¹ûÒÑ¾­ÊµÀı»¯¹ıÔòÖ±½Ó·µ»Ø
+    	//å¦‚æœå·²ç»å®ä¾‹åŒ–è¿‡åˆ™ç›´æ¥è¿”å›
         if(isset($this->Models[$filename])){return $this->Models[$filename];  }
         $file_path = APP."/models/".$filename.".php";
         if(file_exists($file_path)||$filename=='M'){
@@ -66,7 +66,7 @@ class C{
     }
     
     /**
-     * »ñÈ¡³¬¼¶¶ÔÏó
+     * è·å–è¶…çº§å¯¹è±¡
      * @return C
      */
     public static function & get_inst(){
