@@ -1,5 +1,9 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
-
+/**
+ * 路由类
+ * @author toryzen
+ *
+ */
 class R{
 	
 	//控制器

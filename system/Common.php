@@ -1,7 +1,8 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
-
 /**
- * 载入类
+ * 公共方法
+ * @author toryzen
+ * 
  */
 if(!function_exists("load")){
 	

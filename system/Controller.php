@@ -1,5 +1,9 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
-
+/**
+ * ¿ØÖÆÆ÷Àà
+ * @author toryzen
+ *
+ */
 class C{
 
     public $conn;
@@ -47,14 +51,13 @@ class C{
         $file_path = APP."/models/".$filename.".php";
         if(file_exists($file_path)||$filename=='M'){
             $class_name = $filename;
-            if(file_exists($file_path)){
-            	include($file_path);
-            }
+            $this->conn = &db_driver();
+            include($file_path);
             if(class_exists($class_name)||$filename=='M'){
-                $this->conn = &mysql_driver();
                 $this->Models[$filename] = new $class_name($this->conn);
                 return $this->Models[$filename];
             }else{
+            	$this->conn->close();
                 exit("Model class not found ! ");
             }
         }else{

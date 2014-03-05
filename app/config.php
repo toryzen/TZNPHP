@@ -1,6 +1,7 @@
 <?php
 
 //Êý¾Ý¿âÅäÖÃ
+$config_db['db_type']  = 'mysql';
 $config_db['hostname'] = 'localhost';
 $config_db['username'] = 'root';
 $config_db['password'] = '';
