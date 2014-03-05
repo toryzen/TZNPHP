@@ -3,17 +3,19 @@
 
 一直都在用框架，没有尝试过写框架，这次来一个全新尝试。
 
-目前0.0.1版本，没有路由分发，没有安全验证，没有考虑扩展性。在后期开发中会慢慢增强其功能
+目前0.0.3版本，在后期开发中会慢慢增强其功能
 
 1、框架目录结构
 <pre>
 system
+    | DB
+        mysqli.php
     Bootstrap.php
     Common.php
     Controller.php
     Model.php
-    View.php
     Route.php
+    View.php
 </pre>
 
 四个文件实现基本的MVC
@@ -56,6 +58,7 @@ require SYSTEM."Bootstrap.php";
 4、配置文件config.php
 <pre>
 //数据库配置
+$config_db['db_type']  = 'mysql' 
 $config_db['hostname'] = 'localhost';
 $config_db['username'] = 'root';
 $config_db['password'] = '';
@@ -76,3 +79,4 @@ $config_rt['redict']['Index/test']   = 'Index/index';   //重定向
 多数据库驱动
 方法引入
 公共类引入
+
