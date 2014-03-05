@@ -5,23 +5,24 @@
  * 
  */
 define("CORE","TNZPHP");
-define("VERSION","0.0.2");
+define("VERSION","0.0.3");
+
+
+//引入公共方法
+require(SYSTEM."common.php");
 
 //检测配置文件
 if(file_exists(APP."config.php")){
 	require(APP."config.php");
 }else{
-	exit("Config file not found !");
+	show_error("没有找到配置文件!\n文件:".APP."config1.php");
 }
 
-//引入公共方法
-require(SYSTEM."Common.php");
-
 //引入基础控制器
-require(SYSTEM."Controller.php");
+require(SYSTEM."controller.php");
 
 //引入路由
-$RT = &load("R","Route.php");
+$RT = &load("R","route.php");
 
 $class  = $RT->class;
 $method = $RT->method;
@@ -38,13 +39,13 @@ if(file_exists(APP."controllers/".$class.".php")){
             //输出
             $VEW->output();
         }else{
-            exit("Method not found !");
+        	show_error("没有找到可用方法! 方法：'".$method."' 文件:".APP."controllers/".$class.".php");
         }
     }else{
-        exit("Class not found !");
+    	show_error("没有找到可用类! 类名：'".$class."' 文件:".APP."controllers/".$class.".php");
     }
 }else{
-    exit("Class file not found !");
+	show_error("没有找到控制器! 文件:".APP."controllers/".$class.".php");
 }
 
 
@@ -65,17 +66,17 @@ function &db_driver(){
     //print_r($config_db);
     switch ($config_db['db_type']){
     	case "mysql":
-    		require_once(SYSTEM.'DB/mysqli.php');
+    		require_once(SYSTEM.'db/mysqli.php');
     		$db = new mysqli($config_db['hostname'],$config_db['username'],$config_db['password'],$config_db['database']);
     		$db->set_charset($config_db['char_set']);
     		if(!$db){
-    			exit($db->error);
+    			show_error("数据库连接错误! 信息:".$db->error);
     		}
     		break;
     	default:
-    		exit("Database driver not found !");
+    		show_error("不支持该类型的数据库! 类型:".$config_db['db_type']);
     }
-    require_once(SYSTEM."Model.php");
+    require_once(SYSTEM."model.php");
     return $db;
 }
 

@@ -22,5 +22,5 @@ $system = str_replace("\\","/",$system);
 define("APP",$app);
 define("SYSTEM",$system );
 
-require SYSTEM."Bootstrap.php";
+require SYSTEM."bootstrap.php";
 

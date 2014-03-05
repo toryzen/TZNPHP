@@ -1,6 +1,6 @@
 <?php
 
-//Êý¾Ý¿âÅäÖÃ
+//æ•°æ®åº“é…ç½®
 $config_db['db_type']  = 'mysql';
 $config_db['hostname'] = 'localhost';
 $config_db['username'] = 'root';
@@ -8,9 +8,9 @@ $config_db['password'] = '';
 $config_db['database'] = 'ci_rbac';
 $config_db['char_set'] = 'utf8';
 
-//Â·ÓÉÅäÖÃ
-$config_rt['type']     = '2';	  						//URLÄ£Ê½,1:Ä¬ÈÏ($_GET['c']:¿ØÖÆÆ÷,$_GET['m']:·½·¨),2:PathInfo,3:»ìºÏ
-$config_rt['class']    = 'Index'; 						//Ä¬ÈÏ¿ØÖÆÆ÷Àà
-$config_rt['method']   = 'index'; 						//Ä¬ÈÏ·½·¨
-$config_rt['redict']['Index/test']   = 'Index/index'; //ÖØ¶¨Ïò
+//è·¯ç”±é…ç½®
+$config_rt['type']     = '2';	  						//URLæ¨¡å¼,1:é»˜è®¤($_GET['c']:æŽ§åˆ¶å™¨,$_GET['m']:æ–¹æ³•),2:PathInfo,3:æ··åˆ
+$config_rt['class']    = 'Index'; 						//é»˜è®¤æŽ§åˆ¶å™¨ç±»
+$config_rt['method']   = 'index'; 						//é»˜è®¤æ–¹æ³•
+$config_rt['redict']['Index/test']   = 'Index/index';   //é‡å®šå‘
 

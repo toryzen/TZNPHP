@@ -26,17 +26,17 @@ class R{
 			case 2:
 				$PATH_INFO = $_SERVER['PATH_INFO'];
 				$PATH_INFO_ARRAY = explode("/",$PATH_INFO);
-				$this->class  = isset($PATH_INFO_ARRAY[1])?$PATH_INFO_ARRAY[1]:$this->class;
-				$this->method = isset($PATH_INFO_ARRAY[2])?$PATH_INFO_ARRAY[2]:$this->method;
+				$this->class  = isset($PATH_INFO_ARRAY[1])&&$PATH_INFO_ARRAY[1]!=""?$PATH_INFO_ARRAY[1]:$this->class;
+				$this->method = isset($PATH_INFO_ARRAY[2])&&$PATH_INFO_ARRAY[2]!=""?$PATH_INFO_ARRAY[2]:$this->method;
 				break;
 			case 3:
 				$PATH_INFO = $_SERVER['PATH_INFO'];
 				$PATH_INFO_ARRAY = explode("/",$PATH_INFO);
-				$this->class  = isset($PATH_INFO_ARRAY[1])?$PATH_INFO_ARRAY[1]:isset($_GET['c'])?$_GET['c']:$this->class;
-				$this->method = isset($PATH_INFO_ARRAY[2])?$PATH_INFO_ARRAY[2]:isset($_GET['m'])?$_GET['m']:$this->method;
+				$this->class  = isset($PATH_INFO_ARRAY[1])&&$PATH_INFO_ARRAY[1]!=""?$PATH_INFO_ARRAY[1]:isset($_GET['c'])?$_GET['c']:$this->class;
+				$this->method = isset($PATH_INFO_ARRAY[2])&&$PATH_INFO_ARRAY[2]!=""?$PATH_INFO_ARRAY[2]:isset($_GET['m'])?$_GET['m']:$this->method;
 				break;
 			default:
-				exit("Route type setting error !");
+				show_error("路由类型设置错误！");
     			
     	};
     	

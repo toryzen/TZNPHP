@@ -47,3 +47,10 @@ if(!function_exists("save_load")){
 		return $is_load;
 	}
 }
+if(!function_exists("show_error")){
+	function show_error($errinfo,$page="frame")
+	{
+		include SYSTEM."error/".frame.".php";
+		die();
+	}
+}

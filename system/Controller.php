@@ -37,7 +37,7 @@ class C{
             $this->core->V->contents = ob_get_contents();
             @ob_end_clean();
         }else{
-            exit("View file not found ! ");
+        	show_error("视图文件没有找到！文件:".$file_path);
         }
     }
     
@@ -58,10 +58,10 @@ class C{
                 return $this->Models[$filename];
             }else{
             	$this->conn->close();
-                exit("Model class not found ! ");
+            	show_error("模型类没有找到！类：".$class_name."文件:".$file_path);
             }
         }else{
-            exit("Model file not found ! ");
+        	show_error("模型文件没有找到！文件:".$file_path);
         }
     }
     

@@ -1,6 +1,6 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * MysqlÊý¾Ý¿â²Ù×÷(Mysqli)
+ * Mysqlæ•°æ®åº“æ“ä½œ(Mysqli)
  * @author toryzen
  * 
  */
@@ -13,7 +13,7 @@ class DB {
     }
     
     /**
-     * Ö´ÐÐQuery
+     * æ‰§è¡ŒQuery
      * @param unknown $sql
      * @return unknown
      */
@@ -23,7 +23,7 @@ class DB {
     }
     
     /**
-     * »ñÈ¡Ò»Ìõ¼ÇÂ¼
+     * èŽ·å–ä¸€æ¡è®°å½•
      * @param unknown $sql
      * @return unknown
      */
@@ -34,7 +34,7 @@ class DB {
     }
     
     /**
-     * »ñÈ¡È«²¿¼ÇÂ¼
+     * èŽ·å–å…¨éƒ¨è®°å½•
      * @param unknown $sql
      * @return unknown
      */
