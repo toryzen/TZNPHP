@@ -8,14 +8,17 @@
 1、框架目录结构
 <pre>
 system
-    | DB
+    | db
         mysqli.php
-    Bootstrap.php
-    Common.php
-    Controller.php
-    Model.php
-    Route.php
-    View.php
+    | error
+        404.php
+        frame.php
+    bootstrap.php
+    common.php
+    controller.php
+    model.php
+    route.php
+    view.php
 </pre>
 
 四个文件实现基本的MVC
