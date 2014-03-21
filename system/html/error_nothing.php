@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Test</title>
+	<title>Wrong</title>
     <meta charset="UTF-8" />
 </head>
 <style>
@@ -24,27 +24,9 @@
 
 <p>
 <div class="mainpannel">
-	<h1>TZN Framework!</h1>
+	<h1>Sometime wrong with this system</h1>
 	<hr/>
-	<h2>Hello Word !</h2>
-	<div class="show">
-<PRE>
-
-  app
-    | controllers
-        Index.php
-    | functions
-        Common.php
-    | libraries    
-        Test.class.php
-    | models
-        Index_model.php
-    | views
-        index.html
-    config.php
-    
-</PRE>
-	</div>
+	<h2>Sometime wrong with this system!</h2>
 	<br/>
 	
 </div>

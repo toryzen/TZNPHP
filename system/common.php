@@ -1,11 +1,30 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
  * 公共方法
- * @author toryzen 
- * 
+ * @author toryzen
+ *
+ */
+/*
+ * 文件是否存在(区分Windows下大小写)
+ */
+if(!function_exists("t_file_exists")){
+	function t_file_exists($filename){
+		if(is_file($filename)){
+			if(ISWIN){
+				if(basename($filename)!=basename(realpath($filename))){
+					return FALSE;
+				}
+			}
+			return TRUE;
+		}
+		return FALSE;
+		
+	}
+}
+/*
+ * 载入类
  */
 if(!function_exists("load")){
-	
 	function &load($class,$file=""){
 		static $_class;
 		if(isset($_class[$class])){
@@ -13,7 +32,7 @@ if(!function_exists("load")){
 		}
 		$file_ok = FALSE;
 		foreach(array(APP,SYSTEM) as $DIR){
-			if(file_exists($DIR.$file)){
+			if(t_file_exists($DIR.$file)){
 				if(!class_exists($class)){
 					include($DIR.$file);
 					$file_ok = TRUE;
@@ -22,11 +41,11 @@ if(!function_exists("load")){
 			}
 		}
 		if(!$file_ok){
-			exit("Class file not found!");
+			show_error("未找到类文件！".$file);
 		}
 		
 		if(!class_exists($class)){
-			exit("Class not found!");
+			show_error("未找到类！".$class);
 		}
 		$_class[$class] = new $class();
 		save_load($class);
@@ -34,7 +53,7 @@ if(!function_exists("load")){
 	}
 }
 
-/**
+/*
  * 记录载入的类
  */
 if(!function_exists("save_load")){
@@ -47,10 +66,38 @@ if(!function_exists("save_load")){
 		return $is_load;
 	}
 }
+/*
+ * 加载文件
+ */
+if(!function_exists("import")){
+	function import($filename,$dirc="functions"){
+		static $ldfunc = array();
+		if(!$ldfunc[$dirc.$filename]){
+			if(file_exists(APP.$dirc."/".$filename.".php")){
+				require(APP.$dirc."/".$filename.".php");
+			}else{
+				show_error("加载文件失败！(".APP."functions/".$filename.".php)");
+			}	
+		}
+	}
+}
+/*
+ * 错误信息展示页
+ */
 if(!function_exists("show_error")){
-	function show_error($errinfo,$page="frame")
+	function show_error($errinfo,$page=NULL)
 	{
-		include SYSTEM."error/".frame.".php";
+		if(DEBUG){
+			$default_page = "error_frame";
+		}else{
+			$default_page = "error_nothing";
+		}
+		$page = empty($page)?$default_page:"error_".$page;
+		if(t_file_exists(SYSTEM."html/".$page.".php")){
+			include SYSTEM."html/".$page.".php";
+		}else{
+			exit("Error Page Not Found !");
+		}
 		die();
 	}
 }

@@ -29,6 +29,10 @@ system
 app
     | controllers
         Index.php
+    | functions
+        Common.php
+    | libraries    
+        Test.class.php
     | models
         Index_model.php
     | views
@@ -70,7 +74,7 @@ $config_db['db_type']  = 'mysql'
 $config_db['hostname'] = 'localhost';
 $config_db['username'] = 'root';
 $config_db['password'] = '';
-$config_db['database'] = 'ci_rbac';
+$config_db['database'] = 'tzn';
 $config_db['char_set'] = 'utf8';
 
 //路由配置
@@ -78,6 +82,9 @@ $config_rt['type']     = '2';	  						//URL模式,1:默认($_GET['c']:控制器,
 $config_rt['class']    = 'Index'; 						//默认控制器类
 $config_rt['method']   = 'index'; 						//默认方法
 $config_rt['redict']['Index/test']   = 'Index/index';   //重定向
+
+//自动加载
+$config_al['functions']     = array();//array('Common','Somethine')
 </pre>
 
 基本上没事就写两笔，后期再发开预计整体目录结构会发生变化
@@ -88,4 +95,5 @@ $config_rt['redict']['Index/test']   = 'Index/index';   //重定向
 * 2014-03-06 新增一个错误显示方法，新增error目录，model命名规范<br/\>
 * 2014-03-07 目录结构变化一下，简易封装的数据库操作类都放入db下，并且将核心文件全部转为小写,utf8编码<br/\>
 * 2014-03-08 Route.php更名dispatcher.php；新增debug.php,开启后实现时间与内存记录，并且可以在显示在页面底部；error目录更名html目录；view使用方式变化；强制规范windows下文件名称大小写
+* 2014-03-21 增加import方法,可以导入文件,增加C类load方法,可以直接使用$this->load导入类,增加自动加载功能,项目目录增加functions与libraries
 

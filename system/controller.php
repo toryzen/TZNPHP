@@ -1,42 +1,60 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
+/**
+ * 控制器类
+ * @author toryzen 
+ *
+ */
 class C{
 
     public $conn;
     public $Models;
     
-    public function view($filename,$data_array){
-        global $VEW;
-        $file_path = APP."/views/".$filename.".html";
-        if(file_exists($file_path)){
-            ob_start();
-            if(is_array($data_array)){
-                foreach($data_array as $key=>$value){
-                    $$key = $value;
-                }
-            }
-            include($file_path);
-            $VEW->contents = ob_get_contents();
-            @ob_end_clean();
-        }else{
-            exit("View file not found ! ");
-        }
-    }
+    private static $instance;
     
-    public function model($filename){
+    public function __construct(){
+    	self::$instance =& $this;
+    	//载入已载入过的核心类
+    	foreach(save_load() as $class){
+    		$this->$class = &load($class);
+    	}
+    }
+    /**
+     * 引入类
+     * @param string $class
+     * @param string $file
+     */
+    public function load($class,$file){
+    	$this->$class = &load($class,"libraries/".$file);
+    }
+    /**
+     * 模型实例化
+     * @param string $filename
+     */
+    public function model($filename="M"){
+    	//如果已经实例化过则直接返回
         if(isset($this->Models[$filename])){return $this->Models[$filename];  }
         $file_path = APP."/models/".$filename.".php";
-        if(file_exists($file_path)){
-            $class_name = $filename."_model";
+        if(t_file_exists($file_path)||$filename=='M'){
+            $class_name = $filename;
+            $this->conn = &db_driver();
             include($file_path);
-            if(class_exists($class_name)){
-                $this->conn = &mysql_driver();
+            if(class_exists($class_name)||$filename=='M'){
                 $this->Models[$filename] = new $class_name($this->conn);
                 return $this->Models[$filename];
             }else{
-                exit("Model class not found ! ");
+            	$this->conn->close();
+            	show_error("模型类没有找到！类：".$class_name."文件:".$file_path);
             }
         }else{
-            exit("Model file not found ! ");
+        	show_error("模型文件没有找到！文件:".$file_path);
         }
+    }
+    
+    /**
+     * 获取超级对象
+     * @return C
+     */
+    public static function & get_inst(){
+    	return self::$instance;
     }
 }

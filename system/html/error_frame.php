@@ -1,10 +1,12 @@
 <html>
 <head>
-	<title>Test</title>
+	<title>Error</title>
     <meta charset="UTF-8" />
 </head>
 <style>
+	h1{color:red}
 	.mainpannel{
+		padding: 10px 0 30px 0 ;
 		width:60%;
 		margin-left:auto;
 		margin-right:auto;
@@ -12,8 +14,9 @@
 		-webkit-box-shadow:2px 2px 5px #333333;
 	}
 	.show{
-		text-align:left;
-		width:180px;
+		text-align:center;
+		padding:25px;
+		width:80%;
 		margin-left:auto;
 		margin-right:auto;
 		-webkit-box-shadow:2px 2px 5px #333333;
@@ -24,26 +27,11 @@
 
 <p>
 <div class="mainpannel">
-	<h1>TZN Framework!</h1>
+	<h1>TZN Framework Error</h1>
 	<hr/>
-	<h2>Hello Word !</h2>
+	<h2>TZN framework has stopped working !</h2>
 	<div class="show">
-<PRE>
-
-  app
-    | controllers
-        Index.php
-    | functions
-        Common.php
-    | libraries    
-        Test.class.php
-    | models
-        Index_model.php
-    | views
-        index.html
-    config.php
-    
-</PRE>
+		<?php echo $errinfo; ?>
 	</div>
 	<br/>
 	
