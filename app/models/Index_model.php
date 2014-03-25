@@ -2,7 +2,7 @@
 class Index_model extends M{
 
     public function get_menu(){
-        $sql = "SELECT * FROM rbac_menu";
+        $sql = "SELECT * FROM user";
         return $this->fetch_one($sql);
     }
 

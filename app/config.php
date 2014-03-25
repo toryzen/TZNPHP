@@ -5,7 +5,7 @@ $config_db['db_type']  = 'mysql';
 $config_db['hostname'] = 'localhost';
 $config_db['username'] = 'root';
 $config_db['password'] = '';
-$config_db['database'] = 'tzn';
+$config_db['database'] = 'mysql';
 $config_db['char_set'] = 'utf8';
 
 //路由配置

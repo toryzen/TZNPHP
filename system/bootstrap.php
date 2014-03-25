@@ -5,7 +5,7 @@
  * 
  */
 define("CORE","TNZPHP");
-define("VERSION","0.0.6");
+define("VERSION","0.0.7");
 define("ISWIN",(strstr(PHP_OS,"WIN")?1:0));
 if(DEBUG){
 	define("STIME",microtime());
@@ -45,7 +45,7 @@ if(!empty($config_al['functions'])){
 //路由分发
 $RT = &load("D","dispatcher.php");
 
-$class  = $RT->class;
+$class  = $RT->class."_controller";
 $method = $RT->method;
 
 if(t_file_exists(APP."controllers/".$class.".php")){
@@ -60,9 +60,13 @@ if(t_file_exists(APP."controllers/".$class.".php")){
         if(DEBUG){
         	$Debug->mark("实例化控制器完毕");
         }
+        //前置方法
+        if(method_exists($Controller,"_before_".$method)){
+        	call_user_func(array(&$Controller,"_before_".$method));
+        }
         if(method_exists($Controller,$method)){
             //调用方法
-            $Controller->$method();
+            call_user_func(array(&$Controller,$method));
             if(DEBUG){
             	$Debug->mark("调用控制器方法完毕");
             }
@@ -75,6 +79,10 @@ if(t_file_exists(APP."controllers/".$class.".php")){
             }
         }else{
         	show_error("没有找到可用方法! 方法：'".$method."' 文件:".APP."controllers/".$class.".php");
+        }
+        //后置方法
+        if(method_exists($Controller,"_after_".$method)){
+        	call_user_func(array(&$Controller,"_after_".$method));
         }
     }else{
     	show_error("没有找到可用类! 类名：'".$class."' 文件:".APP."controllers/".$class.".php");

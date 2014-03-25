@@ -8,14 +8,16 @@ class C{
 
     public $conn;
     public $Models;
-    
+
     private static $instance;
     
     public function __construct(){
     	self::$instance =& $this;
-    	//载入已载入过的核心类
     	foreach(save_load() as $class){
     		$this->$class = &load($class);
+    	}
+    	if(method_exists($this, '_init')){
+    		$this->_init();
     	}
     }
     /**

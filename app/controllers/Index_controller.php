@@ -1,8 +1,13 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
-class Index extends C{
+
+class Index_controller extends C{
 	
-	public function __construct(){
-		parent::__construct();
+	public function _init(){
+		//echo "init";
+	}
+	//前置方法
+	public function _before_index(){
+		//echo "before";
 	}
 	
     public function index(){
@@ -10,6 +15,10 @@ class Index extends C{
     	import("Common");
     	$this->load("Test","Test.class.php");
         $this->V->view("index");
+    }
+    //后置方法
+    public function _after_index(){
+    	//echo "after";
     }
     
     public function dbtest(){
