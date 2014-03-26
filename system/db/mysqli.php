@@ -4,7 +4,7 @@
  * @author toryzen 
  * 
  */
-class DB {
+class DB implements DB_interface  {
 
     public $conn;
     

@@ -2,8 +2,8 @@
 /**
 	TZN Framework 入口文件
  */
-$app    = "app";	//APP目录
-$system = "system"; //SYSTEM目录
+$app    = "./";	//APP目录
+$system = "../system"; //SYSTEM目录
 $dubug  = true;	//DEBUG模式
 
 if(is_dir($app)){

@@ -1,15 +1,15 @@
 <?php  if ( ! defined('SYSTEM')) exit('Go away!');
 /**
- * DB接口
+ * DB类接口
  * @author toryzen 
  * 
  */
 interface DB_interface {
 
-    public function query();
+    public function query($sql);
     
-    public function fetch_one();
+    public function fetch_one($sql);
     
-    public function fetch_all();
+    public function fetch_all($sql);
     
 }

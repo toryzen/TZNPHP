@@ -3,32 +3,33 @@
 
 一直都在用框架，没有尝试过写框架，这次来一个全新尝试。
 
-目前0.0.5版本，在后期开发中会慢慢增强其功能
+目前0.0.7版本，在后期开发中会慢慢增强其功能
 
 1、框架目录结构
 <pre>
 system
     | db
         mysqli.php
-    | error
-        404.php
-        frame.php
+    | html
+        debug.php
+        error_frame.php
+        error_nothing.php
     bootstrap.php
-    debug.php
     common.php
     controller.php
-    model.php
+    debug.php
     dispatcher.php
+    model.php
     view.php
 </pre>
 
-实现基本的MVC
+实现MVC
 
 2、项目目录结构
 <pre>
 app
     | controllers
-        Index.php
+        Index_controller.php
     | functions
         Common.php
     | libraries    
@@ -38,13 +39,14 @@ app
     | views
         index.html
     config.php
+    index.php
 </pre>
 
 3、入口 index.php 内容：
 <pre>
-$app    = "app";	//APP目录
-$system = "system"; //SYSTEM目录
-$dubug  = false;	//DEBUG模式
+$app    = "./";	//APP目录
+$system = "../system"; //SYSTEM目录
+$dubug  = true;	//DEBUG模式
 
 if(is_dir($app)){
     $app = realpath($app)."\\";
@@ -87,7 +89,7 @@ $config_rt['redict']['Index/test']   = 'Index/index';   //重定向
 $config_al['functions']     = array();//array('Common','Somethine')
 </pre>
 
-基本上没事就写两笔，后期再发开预计整体目录结构会发生变化
+整体的设计思路参照CI和ThinkPHP,基本上没事就写两笔，在我暂时感到满意之前,整体结构会经常有大的变化
 
 * 2014-03-03 实现基本的MVC<br/\>
 * 2014-03-04 新增Common.php并默认引入,新增Route.php实现基本的路由，优化Bootstrap.php<br/\>
@@ -96,4 +98,5 @@ $config_al['functions']     = array();//array('Common','Somethine')
 * 2014-03-07 目录结构变化一下，简易封装的数据库操作类都放入db下，并且将核心文件全部转为小写,utf8编码<br/\>
 * 2014-03-08 Route.php更名dispatcher.php；新增debug.php,开启后实现时间与内存记录，并且可以在显示在页面底部；error目录更名html目录；view使用方式变化；强制规范windows下文件名称大小写
 * 2014-03-21 增加import方法,可以导入文件,增加C类load方法,可以直接使用$this->load导入类,增加自动加载功能,项目目录增加functions与libraries
+* 2014-03-26 修改controller中文件名,新增_init方法,新增_before_,_after_前置后置方法,增加db接口规范,目录结构稍变化,index文件放入项目目录
 

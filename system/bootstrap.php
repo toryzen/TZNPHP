@@ -106,6 +106,7 @@ function &get_inst(){
 function &db_driver(){
     global $config_db,$db;
     if(isset($db)){return $db;}
+    require_once(SYSTEM.'db/db.php');
     switch ($config_db['db_type']){
     	case "mysql":
     		require_once(SYSTEM.'db/mysqli.php');
