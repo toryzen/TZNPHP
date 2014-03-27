@@ -5,7 +5,7 @@
  * 
  */
 define("CORE","TNZPHP");
-define("VERSION","0.0.7");
+define("VERSION","0.0.8");
 define("ISWIN",(strstr(PHP_OS,"WIN")?1:0));
 if(DEBUG){
 	define("STIME",microtime());

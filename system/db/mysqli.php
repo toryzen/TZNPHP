@@ -21,6 +21,7 @@ class DB implements DB_interface  {
     public function query($sql){
     	if(!$sql)return;
         $query = $this->conn->query($sql);
+        if(mysqli_insert_id($this->conn))return mysqli_insert_id($this->conn);
         return $query;
     }
     

@@ -101,3 +101,19 @@ if(!function_exists("show_error")){
 		die();
 	}
 }
+//URL地址获取
+if(!function_exists("url")){
+	function url($param=""){
+		$PHP_SELF = explode("/",$_SERVER['SCRIPT_NAME']);
+		array_pop($PHP_SELF);
+		foreach($PHP_SELF as $PS){
+			$SELF .= $PS."/";
+		}
+		$URL = "http://".$_SERVER['HTTP_HOST'].$SELF;
+		if($param){
+			return "http://".$_SERVER['HTTP_HOST'].$_SERVER['SCRIPT_NAME']."/".$param;
+		}else{
+			return $URL;
+		}
+	}
+}
